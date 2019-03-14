@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表单</title>
+</head>
+<body>
+        <form id="payment">
+                <p style="font-size:40px;font-weight:bold;">毕业生信息</p>
+                <fieldset  style="width:400px;">					
+                    <legend style="color:red">学生信息</legend>										
+                    <label for="name">姓  名：</label>					
+                    <input id="name" name="name" type="text" placeholder="请输入性名" required autofocus><span style="color:red">*</span>
+                    <br>				
+                    <label for="name">学  号：</label>							
+                    <input id="number" name="number" type="number" placeholder="请输学号" required autofocus><span style="color:red">*</span>
+                    <br>						
+                    <label for="phone">手  机：</label>								
+                    <input id="phone" name="phone" type="tel" placeholder="请输入手机号" required><span style="color:red">*</span>		
+                    <br>						
+                    <label for="email">邮  箱：</label>					
+                    <input id="email" name="email" type="email" placeholder="请输入邮箱地址" required><span style="color:red">*</span>					
+                </fieldset>					
+                <fieldset style="width:400px;">					
+                <legend style="color:red">录取情况：</legend>									
+                    <label for="postcode">录取学校：</label>					
+                    <input id="postcode" name="postcode" type="text" required>	
+                    <br>									
+                    <label for="postcode">入学成绩：</label>					
+                    <input id="postcode" name="postcode" type="text" required>	
+                    <br>									
+                    <label for="postcode">入学时间：</label>							
+                    <input id="postcode" name="postcode" type="date" placeholder=" 年 /月 /日" required>							
+                </fieldset>
+                <input type="submit" value="提交"/>
+                </form>
+</body>
+</html>
