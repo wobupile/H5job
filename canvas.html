@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas{
+            background:url('H5img/jinqiu.jpg') no-repeat;
+            background-size: 216px 162px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="432" height="162" ></canvas>
+</body>
+<script>
+    //绘制覆盖图层，原图以透明形式
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    context.fillStyle='gray';
+    context.fillRect(0,0,216,162);
+    context.fill();
+    context.globalCompositeOperation = 'destination-out';
+
+    var decision;
+    //定义事件
+    canvas.onmousedown=function(dot){
+        dot.preventDefault();
+        decision = true;
+    }
+    //取消事件
+    canvas.onmouseup = function(dot){
+        dot.preventDefault();
+        decision = false;
+        distinct();
+    }
+    //绘画点击透明图层
+    canvas.onmousemove = function(dot){
+        dot.preventDefault();
+        if(decision){
+            var x = (dot.clientX+document.body.scrollLeft)-canvas.offsetLeft || 0;
+            var y = (dot.clientY+document.body.scrollTop)-canvas.offsetTop || 0;            
+            context.beginPath();
+            context.arc(x,y,20,0,Math.PI*2);
+            context.fill();
+            context.closePath();
+        }
+        distinct();
+        
+    }
+    //百分之85清楚覆盖图层实现
+
+    function distinct(){
+        var n = context.getImageData(0,0,216,162).data;
+        var con = 0;
+        for(var i = 0;i< n.length;i +=4){
+            var al= n[i+3];
+            if(al < 10){
+                con++;
+            }
+        }
+        var cons = con /(n.length/4);
+        if(cons>0.70){//老师 我这个设成0.85效果不明显 我就设成0.7了哈
+            context.clearRect(0,0,216,162);
+        }
+    }
+
+</script>
+</html>
