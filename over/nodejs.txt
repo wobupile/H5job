@@ -1,0 +1,5 @@
+1.zR 消折叠
+2.npm i chalk -S(运行依赖)（-D开发依赖）
+3.cat package.json (查看)
+4.rm -rf (删除)
+5.
